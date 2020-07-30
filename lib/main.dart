@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_clippings_web/app/services/firebase_auth_service.dart';
+import 'package:my_clippings_web/ui/dashboard/dash_home.dart';
 import 'package:my_clippings_web/ui/home/HomePage.dart';
-import 'package:my_clippings_web/ui/home/home_view.dart';
 import 'package:provider/provider.dart';
 
 import 'app/models/page.dart';
 import 'app/models/user.dart';
+import 'app/models/views.dart';
 
 // flutter run -d chrome --web-hostname localhost --web-port 5000
 
@@ -17,6 +18,9 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (_) => Pages(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => Views(),
       ),
       StreamProvider(
         create: (context) => context.read<FirebaseAuthService>().onAuthStateChanged,
@@ -38,12 +42,9 @@ class MyApp extends StatelessWidget {
       title: 'Your Clippings',
       home: Consumer<User>(
         builder: (_, user, __){
-          if (user == null) {
-            return HomePage();
-          }
-          else {
-            return HomeView();
-          }
+          return user == null
+            ? HomePage()
+            : DashHome();
         },
       )
     );

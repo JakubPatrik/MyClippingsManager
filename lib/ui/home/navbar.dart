@@ -6,8 +6,8 @@ import 'package:my_clippings_web/app/models/page.dart';
 import 'package:my_clippings_web/app/services/firebase_auth_service.dart';
 import 'package:my_clippings_web/ui/home/responsiveLayout.dart';
 import 'package:provider/provider.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// ignore: must_be_immutable
 class NavBar extends StatelessWidget{
 
   final navLinks = ["Home", "Features", "Contact"];
@@ -39,7 +39,8 @@ class NavBar extends StatelessWidget{
           Row(
             children: [
               Container(
-                width: 60, height: 60,
+                width: 60,
+                height: 60,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   gradient: LinearGradient(
@@ -53,7 +54,9 @@ class NavBar extends StatelessWidget{
                 ),
               ),
               SizedBox(width: 16,),
-              Text('Clippings Manager', style: TextStyle(fontSize: 26 ),),
+              Text(ResponsiveLayout.isSmallScreen(context) ? 'Clippings\nManager' : 'Clippings Manager', style: TextStyle(
+                  fontSize: ResponsiveLayout.isSmallScreen(context) ? 20 : 26 ),
+              ),
             ],
           ),
           if(!ResponsiveLayout.isSmallScreen(context))
@@ -110,7 +113,21 @@ class NavBar extends StatelessWidget{
                     onPressed: () => Provider.of<Pages>(context, listen:false).updatePage(text),
                   ),
                 );
-              }).toList();
+              }).toList()..add(PopupMenuItem(
+                child: FlatButton.icon(
+                  color: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  icon: Icon(FontAwesomeIcons.google, color: Colors.black,),
+                  label: Container(
+                    child: Text("Sign", style: TextStyle(color: Colors.black, fontSize: 18, letterSpacing: 1), ),
+                  ),
+                  onPressed: () {
+                    context.read<FirebaseAuthService>().signInWithGoogle();
+                  },
+                ),
+              ));
             }
           )
         ],

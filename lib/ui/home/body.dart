@@ -215,29 +215,35 @@ class _LargeChildState extends State<LargeChild> {
 
 
 // ignore: must_be_immutable
-class SmallChild extends StatelessWidget{
+class SmallChild extends StatefulWidget{
 
+  @override
+  _SmallChildState createState() => _SmallChildState();
+}
+
+class _SmallChildState extends State<SmallChild> {
   TextEditingController emailCntrl = TextEditingController();
-  TextEditingController passwordCntrl = TextEditingController();
-  String email = '';
-  String pass = '';
 
+  TextEditingController passwordCntrl = TextEditingController();
+
+  String email = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Padding(
-            padding: EdgeInsets.all(40),
+            padding: EdgeInsets.all(30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text('Hello!', style: TextStyle(
-                  fontSize: 60,
+                  fontSize: 50,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF8591B0),
                 )),
                 Text("MyClippings Manager",
-                  style: TextStyle( fontSize: 50, fontWeight: FontWeight.bold, color: Colors.black87),
+                  style: TextStyle( fontSize: 40, fontWeight: FontWeight.bold, color: Colors.black87),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left:12, top: 20),
@@ -285,6 +291,11 @@ class SmallChild extends StatelessWidget{
                                       hintText: 'Your Email',
                                       hintStyle: TextStyle(color: Colors.black),
                                     ),
+                                    onChanged: (val) {
+                                      setState(() {
+                                        this.email = val;
+                                      });
+                                    },
                                   ),
                                 )
                               ],
@@ -313,7 +324,7 @@ class SmallChild extends StatelessWidget{
                                   flex: 8,
                                   child: TextField(
                                     keyboardType: TextInputType.text,
-                                    controller: emailCntrl,
+                                    controller: passwordCntrl,
                                     style: TextStyle(fontSize: 18),
                                     decoration: InputDecoration(
                                       icon: Icon(Icons.vpn_key),
@@ -321,19 +332,60 @@ class SmallChild extends StatelessWidget{
                                       hintText: 'Your Password',
                                       hintStyle: TextStyle(color: Colors.black),
                                     ),
+                                    onChanged: (val) {
+                                      setState(() {
+                                        this.password = val;
+                                      });
+                                    },
                                   ),
                                 )
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 20,),
-                        RaisedButton(
-                          onPressed: (){},
-                          elevation: 0,
-                          color: Colors.transparent,
-                          child: Text('LOG IN', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-                          hoverColor: Colors.white24,
+                        Padding(
+                          padding: EdgeInsets.only(
+                              left: 4,
+                              right: ResponsiveLayout.isSmallScreen(context) ? 4 : 74,
+                              top: 10,
+                              bottom: 10
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 250,
+                                child: EmailSignInButton(email, password),
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [Color(0xFFf4f4f4), Color(0xFFf9f9f9)],
+                                      begin: Alignment.bottomRight,
+                                      end: Alignment.topLeft,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0xFF6078ea).withOpacity(.3),
+                                        offset: Offset(0,8),
+                                        blurRadius: 8,
+                                      )]
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 24,
+                            right: ResponsiveLayout.isSmallScreen(context) ? 4 : 74,
+                            top: 10,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              EmailSignUpButton(email, password),
+                            ],
+                          ),
                         ),
                       ],
                     )
