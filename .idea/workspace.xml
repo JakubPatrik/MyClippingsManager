@@ -4,18 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ce33362-b98c-4ff9-93d0-1deadd676933" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/app/models/clipping.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/app/models/views.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/dashboard/dash_home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/dashboard/home_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/features/contact.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/features/contact.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/features/features.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/features/features.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/home/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/home/body.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/home/home_view.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/home/navbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/home/navbar.dart" afterDir="false" />
-    </list>
+    <list default="true" id="9ce33362-b98c-4ff9-93d0-1deadd676933" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
